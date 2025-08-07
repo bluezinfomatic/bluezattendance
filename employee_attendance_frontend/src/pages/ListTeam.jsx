@@ -120,7 +120,7 @@ export default function ListTeam() {
 
     try {
       await axios.post(
-        "http://127.0.0.1:8000/api/accounts/attendance/save/",
+        "https://bluezattendance.onrender.com/api/accounts/attendance/save/",
         { records: [userAttendance] },
         {
           headers: {
