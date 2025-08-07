@@ -9,16 +9,19 @@ const FourBox = () => {
     recent: 0,
   });
 
-  useEffect(() => {
+useEffect(() => {
     const fetchStats = async () => {
+      const token = localStorage.getItem('token');
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/accounts/stats/');
-        setStats({
-          total: response.data.total_employees,
-          recent: response.data.recent_employees,
+        const res = await axios.get('https://bluezattendance.onrender.com/api/accounts/stats/', {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
         });
-      } catch (error) {
-        console.error('Failed to fetch stats:', error.response?.data || error.message);
+        setTotalEmployees(res.data.total_employees);
+        setRecentEmployees(res.data.recent_employees);
+      } catch (err) {
+        console.error('Failed to fetch stats:', err);
       }
     };
 
