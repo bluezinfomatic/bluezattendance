@@ -11,7 +11,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://127.0.0.1:8000/api/accounts/login/', form);
+      const res = await axios.post('http://bluezattendance.onrender.com/api/accounts/login/', form);
       localStorage.setItem('token', res.data.token);
       navigate('/');
     } catch (error) {
