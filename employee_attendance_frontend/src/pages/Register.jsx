@@ -56,7 +56,7 @@ export default function Register() {
     if (image) formData.append('image', image);
 
     try {
-      axios.post(`${process.env.REACT_APP_API_URL}/register/`, formData, {
+      axios.post(`https://bluezattendance.onrender.com/api/register/`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
