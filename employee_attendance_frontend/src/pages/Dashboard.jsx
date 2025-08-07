@@ -14,7 +14,7 @@ export default function Dashboard() {
     const fetchProfile = async () => {
       const token = localStorage.getItem('token');
       try {
-        const res = await axios.get('http://127.0.0.1:8000/api/accounts/profile/', {
+        const res = await axios.get('https://bluezattendance.onrender.com/api/accounts/profile/', {
           headers: {
             Authorization: `Token ${token}`,
           },
