@@ -38,15 +38,15 @@ export default function ListTeam() {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    axios
-      .get("http://127.0.0.1:8000/api/employees/", {
+      axios.get("https://bluezattendance.onrender.com/api/employees/", {
         headers: { Authorization: `Token ${token}` },
       })
+
       .then((res) => setEmployees(res.data))
       .catch((err) => console.error("Employee load error:", err));
 
     axios
-      .get("http://127.0.0.1:8000/api/accounts/profile/", {
+      .get("https://bluezattendance.onrender.com/api/accounts/profile/", {
         headers: { Authorization: `Token ${token}` },
       })
       .then((res) => {
