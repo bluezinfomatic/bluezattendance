@@ -10,23 +10,26 @@ const FourBox = () => {
   });
 
 useEffect(() => {
-    const fetchStats = async () => {
-      const token = localStorage.getItem('token');
-      try {
-        const res = await axios.get('https://bluezattendance.onrender.com/api/accounts/stats/', {
-          headers: {
-            Authorization: `Token ${token}`,
-          },
-        });
-        setTotalEmployees(res.data.total_employees);
-        setRecentEmployees(res.data.recent_employees);
-      } catch (err) {
-        console.error('Failed to fetch stats:', err);
-      }
-    };
+  const fetchStats = async () => {
+    const token = localStorage.getItem('token');
+    try {
+      const res = await axios.get('https://bluezattendance.onrender.com/api/accounts/stats/', {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      setStats({
+        total: res.data.total_employees,
+        recent: res.data.recent_employees,
+      });
+    } catch (err) {
+      console.error('Failed to fetch stats:', err);
+    }
+  };
 
-    fetchStats();
-  }, []);
+  fetchStats();
+}, []);
+
 
   const boxData = [
     {
