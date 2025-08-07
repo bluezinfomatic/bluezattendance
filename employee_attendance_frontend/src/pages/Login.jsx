@@ -10,24 +10,26 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
   e.preventDefault();
+
   try {
     const res = await axios.post(
       'https://bluezattendance.onrender.com/api/login/',
       {
-        username: form.email, // or email depending on what your backend expects
-        password: form.password
+        // try changing to 'username' if 'email' doesn't work
+        email: form.email,
+        password: form.password,
       }
     );
 
-    // If login successful, store token or user data
     localStorage.setItem('token', res.data.token);
     alert('Login successful');
     navigate('/');
   } catch (error) {
     console.error('Login failed:', error.response?.data || error.message);
-    alert('Invalid credentials');
+    alert('Invalid email or password');
   }
 };
+
 
 
 
