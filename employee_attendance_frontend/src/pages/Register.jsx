@@ -56,7 +56,7 @@ export default function Register() {
     if (image) formData.append('image', image);
 
     try {
-      await axios.post('http://127.0.0.1:8000/api/accounts/register/', formData, {
+      axios.post("https://bluezattendance.onrender.com/api/register/", formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
