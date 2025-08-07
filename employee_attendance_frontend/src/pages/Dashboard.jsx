@@ -11,20 +11,21 @@ export default function Dashboard() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
-    const fetchProfile = async () => {
-      const token = localStorage.getItem('token');
-      try {
-        const res = await axios.get('https://bluezattendance.onrender.com/api/accounts/profile/', {
-          headers: {
-            Authorization: `Token ${token}`,
-          },
-        });
-        setProfile(res.data);
-      } catch (err) {
-        console.error('Failed to load profile:', err);
-        window.location.href = '/login';
-      }
-    };
+   const fetchProfile = async () => {
+  const token = localStorage.getItem('token');
+  try {
+    const res = await axios.get('https://bluezattendance.onrender.com/api/accounts/profile/', {
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    });
+    setProfile(res.data);
+  } catch (err) {
+    console.error('Failed to load profile:', err);
+    window.location.href = '/login';
+  }
+};
+
 
     fetchProfile();
   }, []);
