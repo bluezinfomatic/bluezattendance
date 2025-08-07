@@ -9,26 +9,25 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    const res = await axios.post(
-      'https://bluezattendance.onrender.com/api/login/',
-      {
-        // try changing to 'username' if 'email' doesn't work
-        email: form.email,
-        password: form.password,
-      }
-    );
+    try {
+      const res = await axios.post(
+        'https://bluezattendance.onrender.com/api/login/',
+        {
+          username: form.username,  // ✅ changed from 'email' to 'username'
+          password: form.password,
+        }
+      );
 
-    localStorage.setItem('token', res.data.token);
-    alert('Login successful');
-    navigate('/');
-  } catch (error) {
-    console.error('Login failed:', error.response?.data || error.message);
-    alert('Invalid email or password');
-  }
-};
+      localStorage.setItem('token', res.data.token);
+      alert('Login successful');
+      navigate('/');
+    } catch (error) {
+      console.error('Login failed:', error.response?.data || error.message);
+      alert('Invalid username or password');
+    }
+  };
 
 
 
