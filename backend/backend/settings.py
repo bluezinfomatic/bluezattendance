@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-*+q#bgy!0k_u7*l*m3le4ff@6b72xzc11r!xv9af-^hb_jwn8t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'bluezattendance.onrender.com',
+]
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
