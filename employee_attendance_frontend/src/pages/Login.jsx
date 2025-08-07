@@ -10,36 +10,25 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
   e.preventDefault();
-
   try {
     const res = await axios.post(
-      'https://bluezattendance.onrender.com/api/login/', // ✅ Make sure this is the correct endpoint
+      'https://bluezattendance.onrender.com/api/login/',
       {
-        email: form.email,   // ✅ Use your correct form field names
-        password: form.password,
+        username: form.email, // or email depending on what your backend expects
+        password: form.password
       }
     );
 
-    // ✅ Assuming the API returns a token
-    if (res.data.token) {
-      localStorage.setItem('token', res.data.token);
-      alert('Login successful');
-      navigate('/'); // Redirect to home/dashboard
-    } else {
-      alert('Login failed: No token received');
-    }
-
+    // If login successful, store token or user data
+    localStorage.setItem('token', res.data.token);
+    alert('Login successful');
+    navigate('/');
   } catch (error) {
     console.error('Login failed:', error.response?.data || error.message);
-
-    // Show appropriate error to user
-    if (error.response?.status === 400 || error.response?.status === 401) {
-      alert('Invalid email or password.');
-    } else {
-      alert('Something went wrong. Please try again later.');
-    }
+    alert('Invalid credentials');
   }
 };
+
 
 
   return (
